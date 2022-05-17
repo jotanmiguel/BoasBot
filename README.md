@@ -1,2 +1,2 @@
 # BoasBot
-Boas Discord Bot
+Boas amigos
