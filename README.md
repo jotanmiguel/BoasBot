@@ -1,0 +1,2 @@
+# BoasBot
+Boas Discord Bot
