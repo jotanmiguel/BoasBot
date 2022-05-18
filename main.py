@@ -42,13 +42,7 @@ async def baza(ctx):
 async def on_message(message):
 	# Check if the message sent to the channel is "hello".
 	if message.content == "boas":
-		@bot.command(pass_context=True)
-		async def amigo(ctx):
-			channel = ctx.message.author.voice.channel
-			voice = await channel.connect()
-			voice.play(discord.FFmpegPCMAudio(executable="ffmpeg-master-latest-win64-gpl\\bin\\ffmpeg.exe", source="boas.mp3"))
-			sleep(2)
-			await ctx.guild.voice_client.disconnect()
+		await message.channel.send("https://media.discordapp.net/attachments/885583843631976529/886630344789479464/caption.gif")
 
 	# Includes the commands for the bot. Without this line, you cannot trigger your commands.
 	await bot.process_commands(message)
