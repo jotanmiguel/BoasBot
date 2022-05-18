@@ -1,5 +1,6 @@
 # Import discord.py. Allows access to Discord's API.
 from http import server
+from time import sleep
 from typing_extensions import Self
 from click import pass_context
 from discord import FFmpegPCMAudio
@@ -28,7 +29,8 @@ async def amigo(ctx):
 	channel = ctx.message.author.voice.channel
 	voice = await channel.connect()
 	voice.play(discord.FFmpegPCMAudio(executable="ffmpeg-master-latest-win64-gpl\\bin\\ffmpeg.exe", source="boas.mp3"))
-	voice.disconnect()
+	sleep(2)
+	await ctx.guild.voice_client.disconnect()
 
 @bot.command(pass_context=True)
 async def baza(ctx):
@@ -40,8 +42,13 @@ async def baza(ctx):
 async def on_message(message):
 	# Check if the message sent to the channel is "hello".
 	if message.content == "boas":
-		# Sends a message to the channel.
-		await message.channel.send("https://media.discordapp.net/attachments/885583843631976529/886630344789479464/caption.gif")
+		@bot.command(pass_context=True)
+		async def amigo(ctx):
+			channel = ctx.message.author.voice.channel
+			voice = await channel.connect()
+			voice.play(discord.FFmpegPCMAudio(executable="ffmpeg-master-latest-win64-gpl\\bin\\ffmpeg.exe", source="boas.mp3"))
+			sleep(2)
+			await ctx.guild.voice_client.disconnect()
 
 	# Includes the commands for the bot. Without this line, you cannot trigger your commands.
 	await bot.process_commands(message)
