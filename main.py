@@ -1,5 +1,6 @@
 # Import discord.py. Allows access to Discord's API.
 from http import server
+from typing_extensions import Self
 from click import pass_context
 from discord import FFmpegPCMAudio
 import discord
@@ -31,9 +32,8 @@ async def amigo(ctx):
 
 @bot.command(pass_context=True)
 async def baza(ctx):
-	server = ctx.message.guild
-	voice_client = bot.voice_client
-	await voice_client.disconnect()
+	await ctx.guild.voice_client.disconnect()
+
 
 # on_message() event listener. Notice it is using @bot.event as opposed to @bot.command().
 @bot.event
