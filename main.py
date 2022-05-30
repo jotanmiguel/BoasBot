@@ -21,7 +21,7 @@ load_dotenv("token.env")
 # Grab the API token from the .env file.
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
-# Creates a new Bot object with a specified prefix. It can be whatever you want it to be.
+# Creates a new Bot object with a specified prefix. It can be whatever you want it to be. 
 bot = commands.Bot(command_prefix="boas ")
 
 @bot.command(pass_context=True)
